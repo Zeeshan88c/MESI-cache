@@ -329,6 +329,7 @@ int i;
 #2;
 if (ccu_input.snoop_active || ccu_input.no_snoop && ccu_input.fifo_data_snoop != 4'b0000) begin
   ccu_output.bs_req = 1'b0;
+  ccu_output.bs_req_data = 1'b0;
   if (ccu_input.fifo_data_snoop == 4'b1000) begin
     internal_signals_ccu.bs_resp1 = 1'b1;
   end
@@ -410,7 +411,10 @@ end
                 internal_signals_ccu.upd_cache = 1'b1; 
                 internal_signals_ccu.start = 1'b0; 
              end
-           end 
+           end else begin
+        // Stay in SNOOPING if no conditions are met
+        next_state = SNOOPING;
+    end
         end 
 
         Read_FROM_L2: begin

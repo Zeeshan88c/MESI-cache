@@ -209,7 +209,7 @@ task compare(core_sequence_item curr_trans);
     for (int i = 0; i < 4; i++) begin 
         // Extract LSB from pr_addr[i]
       int lsb = pr_addr[i][3:0];
-      if(read[i] )begin
+      if(read[i])begin
         if (state[i] == 3'b101) begin
             // Check for LSB address and compare respective memory segment
           if (lsb == 4'b0000) begin
@@ -248,14 +248,14 @@ task compare(core_sequence_item curr_trans);
     end
     end
     end
-  /*
+  
         if(L2_req) begin
   //if(miss_l2)begin
     if(L2_data == mem)begin
         `uvm_info("COMPARE", $sformatf("L2 got data from Main Memory"), UVM_LOW);
       end 
     //end
- end*/
+ end
   
   for (int j = 0; j < 4; j++) begin 
         // Extract LSB from pr_addr[j]

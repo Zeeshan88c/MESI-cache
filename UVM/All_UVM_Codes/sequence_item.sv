@@ -38,7 +38,7 @@ constraint read_c{
 constraint write_c{
     write inside {[4'b0000 : 4'b1111]};
 }
-  
+*/  
 constraint pr_addr_c {
     foreach (pr_addr[i]) {
         pr_addr[i] % 16 == 4'h0 || pr_addr[i] % 16 == 4'h4 || 
@@ -50,23 +50,23 @@ constraint pr_addr_rand_c {
     foreach (pr_addr[i]) {
         pr_addr[i][31] dist {1'b0 := 50, 1'b1 := 50}; 
     }
-}*/
+}
 
-
+      
 constraint read_c{
-    read == 4'b0011;
+    read == 4'b1111;
 }
 
 constraint write_c{
-    write == 4'b1100;
+    write == 4'b0000;
 }
  
- constraint pr_addr_c{
+ /*constraint pr_addr_c{
     pr_addr[0] == 32'h11111000;
     pr_addr[1] == 32'h11111000;
-    pr_addr[2] == 32'h11110000;
-    pr_addr[3] == 32'h11110000;
- }
+    pr_addr[2] == 32'h11111000;
+    pr_addr[3] == 32'h11111000;
+ }*/
       
   constraint pr_data_c {
     foreach (pr_data[i]) {
